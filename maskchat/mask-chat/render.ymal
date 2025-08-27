@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: Mask Chat
+    runtime: python
+    env: production
+    plan: free
+    region: oregon  # or frankfurt, singapore, etc.
+    src: ./
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: PORT
+        value: 10000  # Render assigns port via $PORT
+    webServices:
+      # Enable WebSocket support
+      webSocket: true
