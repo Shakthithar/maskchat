@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mask Chat</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- CryptoJS for AES encryption -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <!-- Socket.IO Client -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body class="bg-gray-100 font-sans h-screen flex flex-col">
+
+  <!-- Entry Screen -->
+  <div id="entryScreen" class="flex flex-col items-center justify-center p-8 space-y-6 max-w-md mx-auto mt-20 bg-white rounded-lg shadow">
+    <h1 class="text-2xl font-bold text-center">🔐 Mask Chat</h1>
+    <p class="text-sm text-gray-600 text-center">End-to-end encrypted, no history, no database.</p>
+
+    <input id="nameInput" placeholder="Your Name" class="w-full px-4 py-2 border rounded" />
+    <input id="roomInput" placeholder="Room Code" class="w-full px-4 py-2 border rounded" />
+    <input id="keyInput" type="password" placeholder="Secret Key" class="w-full px-4 py-2 border rounded" />
+
+    <button id="joinBtn" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Start Chat</button>
+  </div>
+
+  <!-- Chat Screen -->
+  <div id="chatScreen" class="hidden flex-1 flex flex-col max-w-md mx-auto w-full bg-white shadow-lg rounded-t-lg overflow-hidden">
+
+    <!-- Header -->
+    <div class="bg-blue-600 text-white p-3">
+      <div class="flex justify-between items-center">
+        <span id="roomLabel" class="font-medium"></span>
+        <span id="status" class="text-sm opacity-90">Offline</span>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div id="messages" class="flex-1 p-3 overflow-y-auto space-y-2 bg-gray-50">
+      <!-- Messages will appear here -->
+    </div>
+
+    <!-- Typing indicator -->
+    <div id="typingIndicator" class="text-xs text-gray-500 italic px-3 h-4 overflow-hidden">
+    </div>
+
+    <!-- Input -->
+    <div class="p-3 border-t flex space-x-2">
+      <input id="messageInput" placeholder="Type a message..." class="flex-1 border px-3 py-2 rounded outline-none focus:ring-2 focus:ring-blue-300" />
+      <button id="sendBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+    </div>
+  </div>
+
+  <!-- Local Scripts -->
+  <script src="/static/script.js"></script>
+</body>
+</html>
